@@ -15,6 +15,26 @@
 </head>
 <body>
 
+
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs>
+<symbol id="i-hombre" viewBox="0 0 24 24"><circle cx="10" cy="14" r="6"/><path d="M15 9l6-6M15 3h6v6"/></symbol>
+<symbol id="i-mujer" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M12 15v7M8.5 19h7"/></symbol>
+<symbol id="i-unisex" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5.2"/><path d="M12 17v5M9.5 20h5M16 8l4.5-4.5M16.5 3.5H21V8"/></symbol>
+<symbol id="i-todos" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+<symbol id="i-arabe" viewBox="0 0 24 24"><path d="M16.5 3.6a8.6 8.6 0 100 16.8 9 9 0 110-16.8z"/><path d="M19 8.6l.9 1.9 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z"/></symbol>
+<symbol id="i-disenador" viewBox="0 0 24 24"><path d="M12 2.5l3 5.5-3 13.5L9 8z"/><path d="M4 8h16L12 2.5 4 8z"/></symbol>
+<symbol id="i-nicho" viewBox="0 0 24 24"><path d="M10 2.5h4v3h-4z"/><path d="M9 5.5h6l2.5 4.5v11H6.5v-11z"/><path d="M9.5 14h5"/></symbol>
+<symbol id="i-todas" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></symbol>
+<symbol id="i-buscar" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3L21 21"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.3A8.4 8.4 0 1112 20.4c-1.4 0-2.8-.4-4-1z"/><path d="M8.7 8.2c.6-.1.8.1 1 .6l.6 1.3c.1.3 0 .5-.2.7l-.5.5c.6 1.2 1.4 2 2.6 2.6l.5-.5c.2-.2.4-.3.7-.2l1.3.6c.5.2.7.4.6 1-.1.9-1 1.5-1.9 1.4-2.6-.3-5.5-3.2-5.9-5.9-.1-.9.4-1.9 1.2-2.1z"/></symbol>
+<symbol id="i-precio" viewBox="0 0 24 24"><path d="M3.5 11.5V4h7.5l9 9-7.5 7.5-9-9z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+<symbol id="i-gota" viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 10.4a6 6 0 11-12 0C6 9.4 12 3 12 3z"/></symbol>
+<symbol id="i-flecha" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+<symbol id="i-paso" viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></symbol>
+<symbol id="i-cerrar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+<symbol id="i-marca" viewBox="0 0 24 24"><path d="M12 2.5l2.6 6.4 6.9.5-5.3 4.4 1.7 6.7L12 16.8l-5.9 3.7 1.7-6.7L2.5 9.4l6.9-.5z"/></symbol>
+</defs></svg>
+
 <a class="skip" href="#catalogo">Ir al catálogo</a>
 
 <div class="topbar">
@@ -28,42 +48,49 @@
     <h1 class="hero__title"><span>Catálogo</span>Fragancias</h1>
     <p class="hero__lead">451 esencias inspiradas en la perfumería árabe, de diseñador y de nicho. Busca por número o por el perfume que ya te gusta.</p>
     <div class="hero__actions">
-      <a class="btn" href="#catalogo">Ver catálogo</a>
-      <a class="btn btn--ghost" href="#presentaciones">Presentaciones</a>
+      <a class="btn" href="#catalogo"><svg class="ico" aria-hidden="true"><use href="#i-flecha"></use></svg>Ver catálogo</a>
+      <a class="btn btn--ghost" href="#presentaciones"><svg class="ico" aria-hidden="true"><use href="#i-gota"></use></svg>Presentaciones</a>
     </div>
   </div>
 </header>
 
 <nav class="lines" aria-label="Líneas del catálogo">
   <div class="lines__grid">
-    <a class="lines__item" href="#catalogo" data-jump="arabe"><b>Árabes</b><span>100 referencias</span></a>
-    <a class="lines__item" href="#catalogo" data-jump="disenador"><b>Diseñador</b><span>136 referencias</span></a>
-    <a class="lines__item" href="#catalogo" data-jump="nicho"><b>Nicho</b><span>215 referencias</span></a>
+    <a class="lines__item" href="#catalogo" data-jump="arabe"><span class="lines__ico"><svg class="ico ico--lg" aria-hidden="true"><use href="#i-arabe"></use></svg></span><b>Árabes</b><span>100 referencias</span></a>
+    <a class="lines__item" href="#catalogo" data-jump="disenador"><span class="lines__ico"><svg class="ico ico--lg" aria-hidden="true"><use href="#i-disenador"></use></svg></span><b>Diseñador</b><span>136 referencias</span></a>
+    <a class="lines__item" href="#catalogo" data-jump="nicho"><span class="lines__ico"><svg class="ico ico--lg" aria-hidden="true"><use href="#i-nicho"></use></svg></span><b>Nicho</b><span>215 referencias</span></a>
   </div>
 </nav>
 
 <div class="bar" id="catalogo">
   <div class="wrap">
-    <div class="bar__row">
-      <div class="group" role="group" aria-label="Filtrar por género">
-        <span class="group__label">Género</span>
-        <button class="chip" data-filter="gender" data-value="all" aria-pressed="true">Todos</button>
-        <button class="chip" data-filter="gender" data-value="hombre" aria-pressed="false">Hombre</button>
-        <button class="chip" data-filter="gender" data-value="mujer" aria-pressed="false">Mujer</button>
-        <button class="chip" data-filter="gender" data-value="unisex" aria-pressed="false">Unisex</button>
+
+    <div class="step" data-step="1">
+      <p class="step__head"><span class="step__num">01</span><span class="step__title">Elige el género</span><span class="step__hint">Empieza aquí</span></p>
+      <div class="group group--gender" role="group" aria-label="Filtrar por género">
+        <button class="chip chip--lg" data-filter="gender" data-value="all" aria-pressed="true"><svg class="ico" aria-hidden="true"><use href="#i-todos"></use></svg>Todos</button>
+        <button class="chip chip--lg" data-filter="gender" data-value="hombre" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-hombre"></use></svg>Hombre</button>
+        <button class="chip chip--lg" data-filter="gender" data-value="mujer" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-mujer"></use></svg>Mujer</button>
+        <button class="chip chip--lg" data-filter="gender" data-value="unisex" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-unisex"></use></svg>Unisex</button>
       </div>
-      <div class="group" role="group" aria-label="Filtrar por línea">
-        <span class="group__label">Línea</span>
-        <button class="chip" data-filter="section" data-value="all" aria-pressed="true">Todas</button>
-        <button class="chip" data-filter="section" data-value="arabe" aria-pressed="false">Árabes</button>
-        <button class="chip" data-filter="section" data-value="disenador" aria-pressed="false">Diseñador</button>
-        <button class="chip" data-filter="section" data-value="nicho" aria-pressed="false">Nicho</button>
-      </div>
-      <label class="search">
-        <span class="group__label">Buscar</span>
-        <input id="q" type="search" placeholder="Número o perfume" autocomplete="off" aria-label="Buscar por número o por perfume">
-      </label>
     </div>
+
+    <div class="step step--lines" data-step="2" id="stepLine" hidden>
+      <p class="step__head"><span class="step__num">02</span><span class="step__title">Afina la línea</span><span class="step__hint" id="lineHint">Opcional</span></p>
+      <div class="group" role="group" aria-label="Filtrar por línea">
+        <button class="chip" data-filter="section" data-value="all" aria-pressed="true"><svg class="ico" aria-hidden="true"><use href="#i-todas"></use></svg>Todas</button>
+        <button class="chip" data-filter="section" data-value="arabe" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-arabe"></use></svg>Árabes</button>
+        <button class="chip" data-filter="section" data-value="disenador" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-disenador"></use></svg>Diseñador</button>
+        <button class="chip" data-filter="section" data-value="nicho" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-nicho"></use></svg>Nicho</button>
+      </div>
+    </div>
+
+    <label class="search">
+      <svg class="ico ico--lg" aria-hidden="true"><use href="#i-buscar"></use></svg>
+      <input id="q" type="search" placeholder="Busca por número o por el perfume que ya te gusta" autocomplete="off" aria-label="Buscar por número o por perfume">
+      <button class="search__clear" id="qClear" type="button" aria-label="Borrar búsqueda" hidden><svg class="ico" aria-hidden="true"><use href="#i-cerrar"></use></svg></button>
+    </label>
+
     <p class="count" id="count" aria-live="polite"></p>
   </div>
 </div>
@@ -72,9 +99,9 @@
 
 <section class="band" id="presentaciones">
   <div class="wrap">
-    <h2>Precios</h2>
+    <h2><svg class="ico ico--lg" aria-hidden="true"><use href="#i-precio"></use></svg>Precios</h2>
     <div class="pricing" id="pricing"></div>
-    <p class="note">Precios en pesos colombianos. Consulta disponibilidad por chat.</p>
+    <p class="note"><svg class="ico" aria-hidden="true"><use href="#i-gota"></use></svg>Precios en pesos colombianos. Consulta disponibilidad por chat.</p>
   </div>
 </section>
 
@@ -86,15 +113,17 @@
   </div>
 </footer>
 
+<a class="wafab" href="https://wa.me/573116699201" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg class="ico ico--lg" aria-hidden="true"><use href="#i-wa"></use></svg><span>WhatsApp</span></a>
+
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetName">
   <div class="sheet__card">
-    <button class="sheet__close" id="sheetClose">Cerrar</button>
+    <button class="sheet__close" id="sheetClose"><svg class="ico" aria-hidden="true"><use href="#i-cerrar"></use></svg><span>Cerrar</span></button>
     <img class="sheet__img" id="sheetImg" src="" alt="">
     <h2 class="sheet__name" id="sheetName"></h2>
     <p class="sheet__insp" id="sheetInsp"></p>
     <div class="tags" id="sheetTags"></div>
     <div class="sizes" id="sheetSizes"></div>
-    <p style="margin-top:22px"><a class="btn" id="sheetCta" href="#">Consultar por WhatsApp</a></p>
+    <p style="margin-top:22px"><a class="btn" id="sheetCta" href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"></use></svg>Consultar por WhatsApp</a></p>
     <p class="note">Creación propia inspirada en ese perfil olfativo. No es el producto original.</p>
   </div>
 </div>

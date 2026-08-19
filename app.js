@@ -1,5 +1,5 @@
 /* AURVM. Pon aquí tu WhatsApp en formato internacional, sin el signo +. */
-const WHATSAPP = '573000000000';
+const WHATSAPP = '573116699201';
 
 const SECTIONS = [
   { key: 'arabe', label: 'Perfumes árabes' },
@@ -14,12 +14,14 @@ const GENDERS = [
 
 /* Precios en pesos. Base: línea diseñador.
    Árabes x1.25 y nicho x1.4, siempre redondeando al mil de arriba. */
-const BASE = { 30: 25000, 50: 35000, 100: 100000 };
+const BASE = { 30: 25000, 50: 35000, 100: 50000 };
 const FACTOR = { disenador: 1, arabe: 1.25, nicho: 1.4 };
 const SIZE_LABEL = { 30: 'Bolsillo', 50: 'Diario', 100: 'Colección' };
 
 const priceOf = (section, ml) => Math.ceil((BASE[ml] * FACTOR[section]) / 1000) * 1000;
 const money = (n) => '$' + n.toLocaleString('es-CO');
+
+const ico = (name, cls) => '<svg class="' + (cls || 'ico') + '" aria-hidden="true"><use href="#i-' + name + '"></use></svg>';
 
 const state = { gender: 'all', section: 'all', q: '' };
 
@@ -70,17 +72,31 @@ function cardHTML(p) {
     '" loading="lazy" decoding="async" width="340" height="340"></span>' +
     '<span class="card__name">Aurum ' + esc(p.n) + '</span>' +
     '<span class="card__insp">Inspirado en ' + esc(p.i) + '</span>' +
-    '<span class="card__price">Desde ' + money(priceOf(p.s, 30)) + '</span></button>';
+    '<span class="card__price">' + ico('precio') + 'Desde ' + money(priceOf(p.s, 30)) + '</span></button>';
+}
+
+const stepLine = document.getElementById('stepLine');
+const lineHint = document.getElementById('lineHint');
+
+/* Paso 2: las líneas aparecen cuando ya se eligió un género. */
+function syncSteps() {
+  const on = state.gender !== 'all' || state.section !== 'all';
+  stepLine.hidden = !on;
+  if (on) {
+    const g = GENDERS.find((x) => x.key === state.gender);
+    lineHint.textContent = g ? 'Filtrando ' + g.label.toLowerCase() : 'Todos los géneros';
+  }
 }
 
 function render() {
+  syncSteps();
   const list = PRODUCTS.filter(matches);
   countEl.innerHTML = list.length
     ? '<b>' + list.length + '</b> ' + (list.length === 1 ? 'fragancia' : 'fragancias')
     : 'Sin resultados';
 
   if (!list.length) {
-    results.innerHTML = '<div class="empty"><b>Nada por aquí</b>Prueba con otro número, o con el nombre del perfume que te gusta.</div>';
+    results.innerHTML = '<div class="empty">' + ico('buscar', 'ico ico--xl') + '<b>Nada por aquí</b>Prueba con otro número, o con el nombre del perfume que te gusta.</div>';
     writeUrl();
     return;
   }
@@ -89,11 +105,11 @@ function render() {
   SECTIONS.forEach((sec) => {
     const inSec = list.filter((p) => p.s === sec.key);
     if (!inSec.length) return;
-    html += '<section><div class="section__head"><h2>' + sec.label + '</h2><span class="tally">' + inSec.length + '</span></div>';
+    html += '<section><div class="section__head">' + ico(sec.key, 'ico ico--lg') + '<h2>' + sec.label + '</h2><span class="tally">' + inSec.length + '</span></div>';
     GENDERS.forEach((g) => {
       const inG = inSec.filter((p) => p.g === g.key);
       if (!inG.length) return;
-      if (state.gender === 'all') html += '<h3 class="sub__head">' + g.label + '</h3>';
+      if (state.gender === 'all') html += '<h3 class="sub__head">' + ico(g.key) + g.label + '</h3>';
       html += '<div class="grid">' + inG.map(cardHTML).join('') + '</div>';
     });
     html += '</section>';
@@ -129,6 +145,12 @@ function reveal() {
 document.querySelectorAll('.chip').forEach((chip) => {
   chip.addEventListener('click', () => {
     state[chip.dataset.filter] = chip.dataset.value;
+    if (chip.dataset.filter === 'gender' && chip.dataset.value === 'all') {
+      state.section = 'all';
+      document.querySelectorAll('.chip[data-filter="section"]').forEach((c) => {
+        c.setAttribute('aria-pressed', String(c.dataset.value === 'all'));
+      });
+    }
     document.querySelectorAll('.chip[data-filter="' + chip.dataset.filter + '"]').forEach((c) => {
       c.setAttribute('aria-pressed', String(c === chip));
     });
@@ -139,6 +161,7 @@ document.querySelectorAll('.chip').forEach((chip) => {
 document.querySelectorAll('[data-jump]').forEach((link) => {
   link.addEventListener('click', () => {
     const val = link.dataset.jump;
+    document.getElementById('stepLine').hidden = false;
     state.section = val;
     document.querySelectorAll('.chip[data-filter="section"]').forEach((c) => {
       c.setAttribute('aria-pressed', String(c.dataset.value === val));
@@ -147,10 +170,19 @@ document.querySelectorAll('[data-jump]').forEach((link) => {
   });
 });
 
+const qClear = document.getElementById('qClear');
 let t;
 input.addEventListener('input', (e) => {
+  qClear.hidden = !e.target.value;
   clearTimeout(t);
   t = setTimeout(() => { state.q = e.target.value.trim(); render(); }, 140);
+});
+qClear.addEventListener('click', () => {
+  input.value = '';
+  qClear.hidden = true;
+  state.q = '';
+  render();
+  input.focus();
 });
 
 /* ---- ficha ---- */
@@ -167,8 +199,8 @@ function openSheet(p) {
     '<div class="size"><b>' + ml + ' ML</b><span>' + SIZE_LABEL[ml] + '</span>' +
     '<span class="price">' + money(priceOf(p.s, ml)) + '</span></div>').join('');
   document.getElementById('sheetTags').innerHTML =
-    '<span class="tag">' + SECTIONS.find((s) => s.key === p.s).label + '</span>' +
-    '<span class="tag">' + GENDERS.find((g) => g.key === p.g).label + '</span>';
+    '<span class="tag">' + ico(p.s) + SECTIONS.find((s) => s.key === p.s).label + '</span>' +
+    '<span class="tag">' + ico(p.g) + GENDERS.find((g) => g.key === p.g).label + '</span>';
   document.getElementById('sheetCta').href = 'https://wa.me/' + WHATSAPP + '?text=' +
     encodeURIComponent('Hola, me interesa Aurum ' + p.n + ' (inspirado en ' + p.i + '). ¿Disponibilidad?');
   sheet.classList.add('is-open');
@@ -205,9 +237,10 @@ document.addEventListener('keydown', (e) => {
 document.getElementById('pricing').innerHTML =
   '<div class="pricing__row"><b></b><span>30 ml</span><span>50 ml</span><span>100 ml</span></div>' +
   SECTIONS.map((sec) =>
-    '<div class="pricing__row"><b>' + sec.label.replace('Perfumes ', '') + '</b>' +
+    '<div class="pricing__row"><b>' + ico(sec.key) + sec.label.replace('Perfumes ', '') + '</b>' +
     [30, 50, 100].map((ml) => '<span>' + money(priceOf(sec.key, ml)) + '</span>').join('') +
     '</div>').join('');
 
 readUrl();
+if (input.value) document.getElementById('qClear').hidden = false;
 render();
