@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo AURVM Fragancias</title>
+<meta name="description" content="Catálogo AURVM: 451 fragancias árabes, de diseñador y de nicho para hombre, mujer y unisex.">
+<meta property="og:title" content="Catálogo AURVM Fragancias">
+<meta property="og:description" content="451 fragancias árabes, de diseñador y de nicho.">
+<meta property="og:image" content="img/mark.webp">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="img/mark.webp">
+<link rel="preload" as="font" href="fonts/benzin-extra-bold.ttf" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#catalogo">Ir al catálogo</a>
+
+<div class="topbar">
+  <a class="topbar__brand" href="#top"><img src="img/mark.webp" alt="">AURVM</a>
+  <span class="topbar__meta">Edición 08.2026</span>
+</div>
+
+<header class="hero" id="top">
+  <div>
+    <p class="hero__eyebrow">Aurvm Perfumes</p>
+    <h1 class="hero__title"><span>Catálogo</span>Fragancias</h1>
+    <p class="hero__lead">451 esencias inspiradas en la perfumería árabe, de diseñador y de nicho. Busca por número o por el perfume que ya te gusta.</p>
+    <div class="hero__actions">
+      <a class="btn" href="#catalogo">Ver catálogo</a>
+      <a class="btn btn--ghost" href="#presentaciones">Presentaciones</a>
+    </div>
+  </div>
+</header>
+
+<nav class="lines" aria-label="Líneas del catálogo">
+  <div class="lines__grid">
+    <a class="lines__item" href="#catalogo" data-jump="arabe"><b>Árabes</b><span>100 referencias</span></a>
+    <a class="lines__item" href="#catalogo" data-jump="disenador"><b>Diseñador</b><span>136 referencias</span></a>
+    <a class="lines__item" href="#catalogo" data-jump="nicho"><b>Nicho</b><span>215 referencias</span></a>
+  </div>
+</nav>
+
+<div class="bar" id="catalogo">
+  <div class="wrap">
+    <div class="bar__row">
+      <div class="group" role="group" aria-label="Filtrar por género">
+        <span class="group__label">Género</span>
+        <button class="chip" data-filter="gender" data-value="all" aria-pressed="true">Todos</button>
+        <button class="chip" data-filter="gender" data-value="hombre" aria-pressed="false">Hombre</button>
+        <button class="chip" data-filter="gender" data-value="mujer" aria-pressed="false">Mujer</button>
+        <button class="chip" data-filter="gender" data-value="unisex" aria-pressed="false">Unisex</button>
+      </div>
+      <div class="group" role="group" aria-label="Filtrar por línea">
+        <span class="group__label">Línea</span>
+        <button class="chip" data-filter="section" data-value="all" aria-pressed="true">Todas</button>
+        <button class="chip" data-filter="section" data-value="arabe" aria-pressed="false">Árabes</button>
+        <button class="chip" data-filter="section" data-value="disenador" aria-pressed="false">Diseñador</button>
+        <button class="chip" data-filter="section" data-value="nicho" aria-pressed="false">Nicho</button>
+      </div>
+      <label class="search">
+        <span class="group__label">Buscar</span>
+        <input id="q" type="search" placeholder="Número o perfume" autocomplete="off" aria-label="Buscar por número o por perfume">
+      </label>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+  </div>
+</div>
+
+<main class="wrap" id="results"></main>
+
+<section class="band" id="presentaciones">
+  <div class="wrap">
+    <h2>Precios</h2>
+    <div class="pricing" id="pricing"></div>
+    <p class="note">Precios en pesos colombianos. Consulta disponibilidad por chat.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <img class="foot__mark" src="img/mark.webp" alt="" width="220" height="217">
+    <p class="foot__quote">“El arte ya existe, nosotros lo creamos”</p>
+    <p class="disclaimer">AURVM es una marca independiente. No estamos afiliados, asociados ni relacionados con ninguna de las marcas mencionadas. Nuestras fragancias son creaciones propias inspiradas en perfiles y familias olfativas, no productos de dichas marcas. Cualquier referencia a nombres comerciales se realiza únicamente con fines descriptivos y comparativos. Todas las marcas y nombres comerciales pertenecen a sus respectivos titulares.</p>
+  </div>
+</footer>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetName">
+  <div class="sheet__card">
+    <button class="sheet__close" id="sheetClose">Cerrar</button>
+    <img class="sheet__img" id="sheetImg" src="" alt="">
+    <h2 class="sheet__name" id="sheetName"></h2>
+    <p class="sheet__insp" id="sheetInsp"></p>
+    <div class="tags" id="sheetTags"></div>
+    <div class="sizes" id="sheetSizes"></div>
+    <p style="margin-top:22px"><a class="btn" id="sheetCta" href="#">Consultar por WhatsApp</a></p>
+    <p class="note">Creación propia inspirada en ese perfil olfativo. No es el producto original.</p>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
